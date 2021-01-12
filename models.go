@@ -29,9 +29,29 @@ type DataItunes struct{
 
 //ResultTvMaze estructura con los campos a obtener de la API tvmaze
 //DataTvmaze estructura utilizada para mapear los datos provenientes de tvmaze
-type ResultTvMaze struct {
-	URL  string `json:"url"`
+type Country struct{
 	Name string `json:"name"`
+	Code string `json:"code"`
+	Timezone string `json:"timezone"`
+}
+
+type Network struct{
+	Id int `json:"id"`
+	Name string `json:"name"`
+	Country Country `json:"country"`
+}
+
+type Image struct{
+	Medium string `json:"medium"`
+	Original string `json:"original"`
+}
+
+type ResultTvMaze struct {
+	Id  int `json:"id"`
+	Name string `json:"name"`
+	Image Image `json:"image"`
+	Network Network `json:"network"`
+	Language string `json:"language"`
 }
 type DataTvmaze struct {
 	Score float32 `json:"score"`
