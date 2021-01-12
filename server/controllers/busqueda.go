@@ -1,16 +1,17 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"github.com/Eddy150893/apiTestGo/server/services"
 	"github.com/Eddy150893/apiTestGo/server/models"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	criterio := params["criterio"]
+	query:=r.URL.Query()
+	criterio:=query.Get("criterio")
+	fmt.Println(criterio)
 	if(criterio!=""){
 		itunes:=services.GetItunes(services.Itunes,services.ItunesService,criterio)
 		tvmaze:=services.GetTvMaze(services.Tvmaze,services.TvmazeService,criterio)

@@ -30,7 +30,7 @@ var routes = Routes{
 	Route{
 		"index",
 		"GET",
-		"/busqueda/{criterio}",
+		"/busqueda",
 		controllers.Index,
 	},
 }
