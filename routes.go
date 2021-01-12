@@ -32,9 +32,15 @@ func NewRouter() *mux.Router {
 //Utiliza la accion Index del archivo controllers.go
 var routes = Routes{
 	Route{
-		"index",
+		"busqueda",
 		"GET",
 		"/busqueda",
+		Busqueda,
+	},
+	Route{
+		"index",
+		"GET",
+		"/",
 		Index,
 	},
 }

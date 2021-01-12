@@ -4,8 +4,12 @@ import (
 	"net/http"
 	"encoding/json"
 )
-
-//Index() funcion utilizada en las ruta index de routes.go
+func Index(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	json.NewEncoder(w).Encode("Servidor Corriendo")
+}
+//Busqueda() funcion utilizada en las ruta index de routes.go
 //el pattern de la ruta es /busqueda?criterio=string
 
 //Entrada :criterio de busqueda
@@ -16,7 +20,7 @@ import (
 //declaradas en services.go
 
 //Response es una estructura declarada en models.go 
-func Index(w http.ResponseWriter, r *http.Request) {
+func Busqueda(w http.ResponseWriter, r *http.Request) {
 	//obtencion de criterio contenido en la url
 	query:=r.URL.Query()
 	criterio:=query.Get("criterio")
@@ -42,3 +46,4 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 	
 }
+
