@@ -1,9 +1,8 @@
-package routes
+package main
 
 import (
 	"net/http"
 	"github.com/gorilla/mux"
-	"github.com/Eddy150893/apiTestGo/controllers"
 )
 
 type Route struct {
@@ -31,6 +30,6 @@ var routes = Routes{
 		"index",
 		"GET",
 		"/busqueda",
-		controllers.Index,
+		Index,
 	},
 }

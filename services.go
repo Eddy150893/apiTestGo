@@ -1,4 +1,4 @@
-package services
+package main
 
 import (
     "fmt"
@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"encoding/xml"
 	"encoding/json"
-	"github.com/Eddy150893/apiTestGo/models"
 )
 
 //Soap Services
@@ -22,7 +21,7 @@ var Tvmaze string="http://api.tvmaze.com/"
 var TvmazeService string="search/shows?q="
 
 //Consulta a API crcind
-func GetSoapDemo(apiUrl,servicio,criterio string)models.CrcResponse{
+func GetSoapDemo(apiUrl,servicio,criterio string)CrcResponse{
 	data := url.Values{}
 	data.Set("name", criterio)
 	data.Set("soap_method", "GetListByName")
@@ -40,14 +39,14 @@ func GetSoapDemo(apiUrl,servicio,criterio string)models.CrcResponse{
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
-	var crcResponse models.CrcResponse
+	var crcResponse CrcResponse
 	xml.Unmarshal(body, &crcResponse)
 	return crcResponse
 }
 
 
 //Consulta a API tvmaze
-func GetTvMaze(apiUrl,servicio,criterio string) []models.DataTvmaze{
+func GetTvMaze(apiUrl,servicio,criterio string) []DataTvmaze{
 	response, err := http.Get(apiUrl+servicio+criterio)
 	if err!=nil{
 		fmt.Print(err)
@@ -56,7 +55,7 @@ func GetTvMaze(apiUrl,servicio,criterio string) []models.DataTvmaze{
 	defer response.Body.Close()
 	responseData,err:=ioutil.ReadAll(response.Body)
 
-	var dataResult []models.DataTvmaze
+	var dataResult []DataTvmaze
 	errMarshal:=json.Unmarshal(responseData,&dataResult)
 	if errMarshal !=nil{
 		fmt.Print("Error en marshal")
@@ -66,7 +65,7 @@ func GetTvMaze(apiUrl,servicio,criterio string) []models.DataTvmaze{
 }
 
 //Consulta a API itunes
-func GetItunes(apiUrl,servicio,criterio string) models.DataItunes{
+func GetItunes(apiUrl,servicio,criterio string) DataItunes{
 	response, err := http.Get(apiUrl+servicio+criterio)
 	if err!=nil{
 		fmt.Print(err.Error())
@@ -74,7 +73,7 @@ func GetItunes(apiUrl,servicio,criterio string) models.DataItunes{
 	}
 	defer response.Body.Close()
 	responseData,err:=ioutil.ReadAll(response.Body)
-	var dataResult models.DataItunes
+	var dataResult DataItunes
 	errMarshal:=json.Unmarshal(responseData,&dataResult)
 	if errMarshal !=nil{
 		fmt.Print(errMarshal.Error())
