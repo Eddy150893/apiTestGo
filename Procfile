@@ -1,1 +1,1 @@
-web:apitribaltest
+web:go run apitribaltest

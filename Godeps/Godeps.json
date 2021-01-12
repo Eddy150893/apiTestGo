@@ -1,7 +1,7 @@
 {
     "ImportPath":"apitribaltest",
     "GoVersion":"1.13.8",
-    "GodepVersion":"v0.0.0-20180126220526-ce0bfadeb516",
+    "GodepVersion":"v74",
     "Packages":[
         "github.com/gorilla/mux v1.8.0"
     ],
