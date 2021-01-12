@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"encoding/json"
-	"github.com/Eddy150893/apiTestGo/server/services"
-	"github.com/Eddy150893/apiTestGo/server/models"
+	"github.com/Eddy150893/apiTestGo/services"
+	"github.com/Eddy150893/apiTestGo/models"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {

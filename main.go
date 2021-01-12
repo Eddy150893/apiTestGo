@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	"github.com/Eddy150893/apiTestGo/server/routes"
+	"github.com/Eddy150893/apiTestGo/routes"
 )
 
 func main() {
